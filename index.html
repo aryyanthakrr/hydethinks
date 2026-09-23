@@ -1,0 +1,3059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hyde — Clarity at the speed of thought.</title>
+<meta name="description" content="Experience Cosmo AI inside Hyde. Zero subscription tax, zero BS. Smart, fast, and aggressively free.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://hydethinks.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hyde — Clarity at the speed of thought.">
+<meta property="og:description" content="Powered by Cosmo. Zero subscription tax, zero BS.">
+<meta property="og:url" content="https://hydethinks.com/">
+<meta property="og:image" content="https://hydethinks.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hyde — Clarity at the speed of thought.">
+<meta name="twitter:description" content="Powered by Cosmo. Zero subscription tax, zero BS.">
+<meta name="twitter:image" content="https://hydethinks.com/og-image.png">
+<meta name="twitter:site" content="@hydethinks">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cg transform='rotate(-30 12 12)'%3E%3Ccircle cx='7.3' cy='3.2' r='1.45'/%3E%3Crect x='5.5' y='4.7' width='3.6' height='14.6' rx='1.8'/%3E%3Crect x='14.9' y='4.7' width='3.6' height='14.6' rx='1.8'/%3E%3Ccircle cx='16.7' cy='20.8' r='1.45'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html, body { background: #000000 !important; color: #ffffff; }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("inter.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("instrument-serif-italic.woff2") format("woff2");
+}
+
+:root {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #9a9a9a;
+  --stat: #d8d8d8;
+  --border: rgba(255, 255, 255, 0.16);
+  --border-soft: rgba(255, 255, 255, 0.12);
+
+  --logo: 21px;
+  --logo-mark: 34px;
+  --nav: 14px;
+  --nav-h: 40px;
+  --btn: 13.5px;
+  --btn-h: 40px;
+  --hero-btn-h: 42px;
+  --h1: 48px;
+  --h2: 34px;
+  --lede: 15.5px;
+  --badge: 12.5px;
+  --header-y: 22px;
+  --header-x: 40px;
+  --hero-gap: 85px;
+  --copy-max: 860px;
+  --lede-max: 500px;
+  --fm: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+html, body {
+  background: #000000;
+  background: var(--bg, #000000);
+  color: #ffffff;
+  color: var(--text, #ffffff);
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+em {
+  font-family: "Instrument Serif", "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: -0.02em;
+}
+
+/* FILM GRAIN TEXTURE */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* AMBIENT GLOW BACKDROP */
+.hero-photo {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #000000;
+  background-image: 
+    radial-gradient(circle 600px at 50% 15%, rgba(255, 255, 255, 0.12), transparent 70%),
+    radial-gradient(circle 800px at 50% 85%, rgba(255, 255, 255, 0.06), transparent 75%);
+  will-change: transform, filter, opacity;
+}
+
+.hero-photo video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.88;
+  display: block;
+  transition: opacity 0.6s ease;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.52) 55%, #000000 96%);
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: var(--header-y) var(--header-x) 10px;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  justify-self: start;
+  font-size: var(--logo);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.logo-mark {
+  height: var(--logo-mark);
+  width: auto;
+  display: block;
+  flex: none;
+}
+
+.logo-suffix {
+  font-weight: 700;
+  background-image: linear-gradient(100deg, #6f6f6f 0%, #6f6f6f 35%, #ffffff 50%, #6f6f6f 65%, #6f6f6f 100%);
+  background-size: 220% auto;
+  background-position: 200% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: titanium-shimmer 3.6s ease-in-out 1.2s infinite;
+}
+
+#site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: center;
+}
+
+.nav-link {
+  height: var(--nav-h);
+  padding: 0 18px;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(198,198,198,0.55);
+  background: linear-gradient(105deg, #050505 0%, #2a2a2a 48%, #4a4a4a 100%);
+  color: #f3f3f3;
+  font-size: var(--nav);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.16) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.nav-link:hover {
+  border-color: rgba(235,235,235,0.9);
+  background: linear-gradient(105deg, #111 0%, #3a3a3a 45%, #6a6a6a 100%);
+  box-shadow: 0 0 18px rgba(200,210,230,0.18);
+}
+
+.nav-link:hover::before {
+  transform: translateX(120%);
+}
+
+.header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05);
+  place-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  z-index: 110;
+}
+
+.burger span {
+  width: 18px;
+  height: 1.5px;
+  background: #fff;
+  border-radius: 1px;
+  display: block;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.burger:hover {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.1);
+}
+
+body.menu-open .burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+body.menu-open .burger span:nth-child(2) { opacity: 0; }
+body.menu-open .burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* MOBILE DRAWER */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), visibility 0.3s;
+}
+
+body.menu-open .mobile-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+  list-style: none;
+}
+
+.mobile-nav-links a {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #e8e8e8;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  transition: all 0.25s;
+}
+
+.mobile-nav-links a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+  border-color: var(--border);
+}
+
+.mobile-cta {
+  width: 100%;
+  max-width: 320px;
+  height: 52px;
+  margin-top: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+/* BUTTONS */
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-h);
+  padding: 0 16px;
+  border-radius: 6px;
+  font-size: var(--btn);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  transition: all 0.35s ease;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.45) 48%, transparent 76%);
+  transform: translateX(-130%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn > span {
+  position: relative;
+  z-index: 2;
+}
+
+.btn:hover::after {
+  transform: translateX(130%);
+}
+
+.btn-solid {
+  background: linear-gradient(180deg, #ffffff 0%, #e7e7e7 48%, #cfcfcf 100%);
+  color: #111;
+  border: 1px solid #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.btn-solid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.95) 18deg, transparent 55deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate-border-line 3.2s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-solid:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #f3f6ff 42%, #d5def2 100%);
+  border-color: #f2f6ff;
+  box-shadow: inset 0 1px 0 #fff, 0 0 26px rgba(186,208,255,0.4), 0 8px 18px rgba(255,255,255,0.14);
+}
+
+@keyframes rotate-border-line {
+  to { transform: rotate(360deg); }
+}
+
+.btn-ghost {
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(0,0,0,0.5) 46%, rgba(150,170,200,0.1));
+  color: #fff;
+  border: 1px solid rgba(198,198,198,0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.btn-ghost:hover {
+  background: linear-gradient(135deg, rgba(210,225,255,0.18), rgba(0,0,0,0.35) 48%, rgba(180,195,220,0.16));
+  border-color: rgba(220,230,255,0.8);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 0 24px rgba(170,200,255,0.28);
+}
+
+.hero-actions .btn {
+  height: var(--hero-btn-h);
+  padding: 0 18px;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 64px 24px var(--hero-gap);
+  min-height: 88vh;
+  position: relative;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: var(--copy-max);
+  width: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #7d7d7d 0%, #2a2a2a 52%, #0a0a0a 100%);
+  color: #f2f2f2;
+  font: 400 var(--badge) var(--fm);
+  letter-spacing: -0.01em;
+}
+
+.badge-star {
+  width: 18px;
+  height: 20px;
+  color: #fff;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.45));
+  display: block;
+}
+
+.hero h1 {
+  font-weight: 500;
+  font-size: var(--h1);
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headline-line {
+  display: block;
+  overflow: hidden;
+  padding: 0.06em 0.15em 0.14em;
+}
+
+.hero h1 em {
+  font-size: 1.08em;
+  background-image: linear-gradient(100deg, #6f6f6f 0%, #6f6f6f 35%, #ffffff 50%, #6f6f6f 65%, #6f6f6f 100%);
+  background-size: 220% auto;
+  background-position: 200% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.lede {
+  max-width: var(--lede-max);
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: var(--lede);
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+}
+
+.tagline {
+  font-weight: 600;
+  font-size: 15px;
+  color: #c9c9c9;
+  margin-top: 14px;
+}
+
+.typeline {
+  font: 500 13px/1.6 var(--fm);
+  color: var(--muted);
+  min-height: 1.6em;
+  margin-top: 16px;
+}
+
+.tcaret {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: #8a8a8a;
+  vertical-align: text-bottom;
+  margin-left: 3px;
+  animation: caret 1.1s steps(2) infinite;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.assure {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 20px;
+  margin-top: 36px;
+  list-style: none;
+  width: 100%;
+}
+
+.assure li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 11.5px var(--fm);
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.assure svg {
+  color: #fff;
+  flex: none;
+}
+
+/* DESKTOP MAC WINDOW */
+.hero-vis {
+  width: 100%;
+  margin-top: 56px;
+  position: relative;
+}
+
+/* HERO APP MOCKUP */
+.hero-app-mockup {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.05);
+  transform: perspective(1000px) rotateX(2deg);
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s ease;
+}
+
+.hero-app-mockup:hover {
+  transform: perspective(1000px) rotateX(0deg);
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.95), 0 0 60px rgba(255,255,255,0.08);
+}
+
+.hero-app-mockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* CODED APP MOCKUP */
+.app-window {
+  background: #050505;
+  aspect-ratio: 16 / 10.5;
+  display: flex;
+  flex-direction: column;
+}
+.app-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border-soft);
+  flex: none;
+}
+.app-dots { display: flex; gap: 6px; }
+.app-dots span { width: 10px; height: 10px; border-radius: 50%; background: #2a2a2a; }
+.app-model-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: 500 12px var(--fm);
+  color: #e8e8e8;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+.app-model-pill svg { width: 13px; height: 13px; flex: none; }
+.app-topbar-right { margin-left: auto; display: flex; gap: 8px; }
+.app-topbar-right span { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--border-soft); }
+.app-body-row { display: flex; flex: 1; min-height: 0; }
+.app-sidebar {
+  width: 46px;
+  flex: none;
+  border-right: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+}
+.app-sidebar svg { width: 17px; height: 17px; color: #5a5a5a; }
+.app-main { flex: 1; min-width: 0; padding: 22px 26px; display: flex; flex-direction: column; overflow: hidden; }
+.app-code {
+  background: #0a0a0a;
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font: 400 12px/1.7 var(--fm);
+  color: #d4d4d4;
+  margin: 4px 0 12px;
+  white-space: pre-wrap;
+  align-self: flex-start;
+  max-width: 92%;
+}
+.app-code .cm { color: #6f6f6f; }
+.app-code .kw { color: #e8e8e8; font-weight: 600; }
+.app-code .fn { color: #ffffff; }
+.app-input-mock {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #0a0a0a;
+}
+.app-input-mock span { color: #5a5a5a; font-size: 13px; flex: 1; }
+.app-input-mock svg { width: 16px; height: 16px; color: #5a5a5a; flex: none; }
+.app-send-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: #fff; display: flex; align-items: center; justify-content: center; flex: none;
+}
+.app-send-dot svg { width: 13px; height: 13px; color: #000; }
+
+.dw-float {
+  position: absolute;
+  left: -14px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font: 500 11.5px var(--fm);
+  color: var(--muted);
+  box-shadow: 0 12px 30px -10px rgba(0,0,0,0.8), 0 0 20px -5px rgba(255,255,255,0.1);
+  animation: floaty 6s ease-in-out infinite;
+}
+.dw-float b {
+  color: #fff;
+}
+
+/* TICKER */
+.tick {
+  border-block: 1px solid var(--border-soft);
+  padding: 16px 0;
+  overflow: hidden;
+  background: #050505;
+  position: relative;
+}
+
+.tick-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: linear-gradient(90deg, #050505 70%, transparent);
+  font: 600 10px var(--fm);
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.tick-row {
+  display: flex;
+  width: max-content;
+  animation: tickmove 35s linear infinite;
+}
+.tick-row:hover {
+  animation-play-state: paused;
+}
+
+.tick-group {
+  display: flex;
+  gap: 48px;
+  padding-right: 48px;
+}
+
+.tick-group span {
+  font: 500 12px var(--fm);
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  white-space: nowrap;
+}
+.tick-group span::after {
+  content: "✦";
+  color: #fff;
+  font-size: 10px;
+}
+
+.tick-punch {
+  background: #000;
+  padding: 20px 0;
+}
+.tick-punch .tick-group span {
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+.tick-punch .tick-group span::after {
+  color: #8a8a8a;
+}
+
+/* SECTIONS COMMON */
+.sec {
+  padding: 110px 0;
+  position: relative;
+}
+
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 11px var(--fm);
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: var(--h2);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.shead {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* METRICS */
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.metric {
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 28px 24px;
+  background: linear-gradient(180deg, #0a0a0a, #050505);
+}
+
+.metric-lbl {
+  font: 500 11px var(--fm);
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.metric-num {
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.metric.bad .metric-num {
+  color: #8a8a8a;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.metric.good {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.metric-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.metric-tag {
+  display: inline-flex;
+  margin-top: 14px;
+  font: 600 11px var(--fm);
+  letter-spacing: 0.1em;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--stat);
+}
+
+/* BENTO */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 6;
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0a0a0a, #050505);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  --mx: 50%;
+  --my: 50%;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: var(--my);
+  left: var(--mx);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255,255,255,0.09), transparent 60%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+}
+
+.card:nth-child(1) { grid-column: span 12; }
+.card:nth-child(2) { grid-column: span 6; }
+.card:nth-child(3) { grid-column: span 6; }
+
+.c-num {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font: 600 11px var(--fm);
+  color: #3a3a3a;
+  letter-spacing: 0.1em;
+}
+
+.c-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.c-ic {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+}
+
+.card h3 {
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.card > p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.pills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border-soft);
+  border-radius: 99px;
+  padding: 10px 12px;
+  font: 500 11.5px var(--fm);
+  color: var(--muted);
+  transition: 0.3s;
+}
+
+.pill i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3a3a3a;
+  transition: 0.3s;
+}
+
+.pill.on {
+  border-color: var(--border);
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+
+.pill.on i {
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+}
+
+.steps-mini {
+  display: grid;
+  gap: 10px;
+}
+
+.smi {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.smi .ck {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  border-radius: 6px;
+  border: 1px solid var(--border-soft);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  transition: 0.3s;
+  font-size: 11px;
+}
+
+.smi.done {
+  color: #fff;
+}
+
+.smi.done .ck {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--border);
+  color: #fff;
+}
+
+.timer-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  border-top: 1px dashed var(--border-soft);
+  padding-top: 12px;
+}
+
+.timer-row .tl {
+  font: 500 10px var(--fm);
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.timer {
+  font: 600 14px var(--fm);
+  color: #fff;
+}
+
+.shield-stats {
+  display: grid;
+  gap: 6px;
+}
+
+.shield-stats div {
+  font: 500 12px var(--fm);
+  color: var(--muted);
+}
+
+.shield-stats b {
+  color: #fff;
+}
+
+/* HOW IT WORKS */
+.how-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.how-sticky {
+  position: sticky;
+  top: 100px;
+}
+
+.hnav {
+  list-style: none;
+  position: relative;
+  padding-left: 2px;
+}
+
+.hnav::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: var(--border-soft);
+}
+
+.hnav li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  color: var(--muted);
+  position: relative;
+}
+
+.hnav .n {
+  width: 29px;
+  height: 29px;
+  flex: none;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  background: #000;
+  display: grid;
+  place-items: center;
+  font: 600 11px var(--fm);
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.hnav .t {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.hnav li.active {
+  color: #fff;
+}
+
+.hnav li.active .n {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+.step {
+  padding: 48px 0;
+  border-top: 1px dashed var(--border-soft);
+}
+.step:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.ghost {
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.25);
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.step h3 {
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+
+.step .desc {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 24px;
+}
+.step .desc b {
+  color: #fff;
+}
+
+.mock {
+  background: #0a0a0a;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 24px;
+  max-width: 500px;
+}
+
+.mock h4 {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mock h4 .tag {
+  margin-left: auto;
+  font: 600 9px var(--fm);
+  letter-spacing: 0.12em;
+  color: #fff;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+
+.fld {
+  background: #050505;
+  border: 1px solid var(--border-soft);
+  border-radius: 9px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+
+.fld .fl {
+  font: 600 9px var(--fm);
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.fld .fv {
+  font-size: 13px;
+  color: #fff;
+}
+
+.mock .micro {
+  margin-top: 12px;
+  text-align: center;
+  font: 400 10.5px var(--fm);
+  color: var(--muted);
+}
+
+.mini-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mini-chat .m {
+  font-size: 12.5px;
+  max-width: 88%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+
+.mini-chat .usr {
+  background: #fff;
+  color: #111;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.mini-chat .bot {
+  background: #141414;
+  border: 1px solid var(--border-soft);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.model-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.model-row span {
+  font: 500 10.5px var(--fm);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: var(--muted);
+}
+
+.model-row span.on {
+  border-color: var(--border);
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+
+/* MANIFESTO */
+.manifesto {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.manifesto h2 {
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.manifesto p {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.manifesto p b {
+  color: #fff;
+}
+
+/* PRICING */
+.pv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.pv-panel {
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 44px);
+  background: linear-gradient(180deg, #0a0a0a, #050505);
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.calc-label span {
+  font: 500 12px var(--fm);
+  color: var(--muted);
+}
+
+.calc-label b {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+.calc-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--border-soft);
+  outline: none;
+  cursor: pointer;
+}
+
+.calc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff, #cfcfcf);
+  border: 1px solid #fff;
+  box-shadow: 0 0 18px rgba(255,255,255,0.35);
+  cursor: grab;
+}
+
+.calc-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: grab;
+}
+
+.calc-result {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.calc-card {
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  background: #050505;
+}
+
+.calc-card .cc-label {
+  font: 500 10px var(--fm);
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.calc-card .cc-num {
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.calc-card.bad .cc-num {
+  color: #8a8a8a;
+  text-decoration: line-through;
+}
+
+.calc-card.good {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.calc-card .cc-sub {
+  font: 400 11px var(--fm);
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.pv-saved {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  text-align: center;
+}
+
+.pv-saved-num {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: #fff;
+}
+
+.pv-saved-sub {
+  font: 500 12px var(--fm);
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.zero-wrap {
+  margin-bottom: 8px;
+}
+
+.zero {
+  font-weight: 800;
+  font-size: clamp(4.5rem, 10vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-shadow: 0 0 60px rgba(255,255,255,0.25);
+}
+
+.zero-lb {
+  font: 600 10px var(--fm);
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.zero-sub {
+  font: 500 12px var(--fm);
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.pv-copy {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 20px 0;
+}
+.pv-copy b {
+  color: #fff;
+}
+
+.inc {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.inc li {
+  display: flex;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #fff;
+}
+
+.no-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 12px var(--fm);
+  color: var(--muted);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 8px 14px;
+}
+
+/* COMPARISON */
+.cmp-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  background: #0a0a0a;
+}
+
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.cmp th, .cmp td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 14px;
+}
+
+.cmp thead th {
+  font: 600 10px var(--fm);
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.cmp thead th.hl {
+  color: #fff;
+}
+
+.cmp tbody td {
+  color: var(--muted);
+}
+.cmp tbody td:first-child {
+  color: #fff;
+  font-weight: 600;
+}
+
+.cmp tbody td.hl {
+  color: #fff;
+  background: rgba(255,255,255,0.03);
+}
+
+.cmp tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.cmp .yes {
+  color: #fff;
+  font-weight: 600;
+}
+.cmp .no {
+  color: #7a7a7a;
+}
+.cmp .free {
+  color: #fff;
+  font-weight: 700;
+}
+.cmp .paid {
+  color: #8a8a8a;
+  font: 600 12px var(--fm);
+}
+
+/* FAQ SECTION */
+.acc-grid {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.acc {
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background: #0a0a0a !important;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.acc.open {
+  border-color: var(--border);
+}
+
+.acc-h {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  text-align: left;
+  font: 600 15px "Inter", sans-serif;
+  color: #ffffff !important;
+  background: transparent !important;
+  cursor: pointer;
+  border: 0;
+}
+
+.acc-h .pl {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--border-soft);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  transition: transform 0.3s, background 0.3s;
+  font-size: 16px;
+}
+
+.acc.open .pl {
+  transform: rotate(45deg);
+  background: rgba(255,255,255,0.1);
+}
+
+.acc-b {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s;
+  background: #0a0a0a !important;
+}
+
+.acc.open .acc-b {
+  grid-template-rows: 1fr;
+}
+
+.acc-b > div {
+  overflow: hidden;
+}
+
+.acc-b p {
+  padding: 0 22px 20px;
+  color: var(--muted) !important;
+  font-size: 14.5px;
+  line-height: 1.7;
+  background: transparent !important;
+}
+.acc-b p b {
+  color: #fff !important;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.letter {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #0a0a0a;
+  padding: clamp(24px, 4vw, 40px);
+}
+
+.letter-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.letter-tag {
+  font: 600 10px var(--fm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.letter-date {
+  font: 400 11px var(--fm);
+  color: var(--muted);
+  align-self: center;
+}
+
+.letter-p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.letter-p.big {
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
+
+.letter-sign {
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  margin-top: 24px;
+}
+
+.letter-sign span {
+  display: block;
+  font: 400 11.5px var(--fm);
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.beliefs {
+  display: grid;
+  gap: 10px;
+}
+
+.belief {
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background: #0a0a0a;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  transition: 0.3s;
+}
+
+.belief:hover {
+  border-color: var(--border);
+  transform: translateX(4px);
+}
+
+.belief .b-n {
+  font: 600 11px var(--fm);
+  color: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.belief h3 {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.belief p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.about-stats div {
+  padding: 24px 18px;
+  text-align: center;
+  border-right: 1px solid var(--border-soft);
+}
+.about-stats div:last-child {
+  border-right: 0;
+}
+
+.about-stats b {
+  display: block;
+  font-weight: 800;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.about-stats span {
+  font: 400 11px var(--fm);
+  color: var(--muted);
+}
+
+/* CTA */
+.cta-sec {
+  padding: 60px 0 100px;
+}
+
+.cta-band {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(48px, 7vw, 80px) 28px;
+  background: radial-gradient(130% 150% at 18% -10%, #3a3a3a 0%, #1a1a1a 45%, #000 100%);
+  border: 1px solid var(--border);
+}
+
+.cta-band h2 {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  margin-bottom: 16px;
+}
+
+.cta-band p {
+  color: var(--muted);
+  font-size: 16.5px;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 64px 0 32px;
+  background: #050505;
+}
+
+.f-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.f-brand p {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin-top: 14px;
+  max-width: 280px;
+}
+
+.f-brand .socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.f-brand .socials a {
+  font: 500 11.5px var(--fm);
+  color: var(--muted);
+}
+.f-brand .socials a:hover {
+  color: #fff;
+}
+
+.f-col h5 {
+  font: 600 10px var(--fm);
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.f-col a {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 5px 0;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.f-col a:hover {
+  color: #fff;
+}
+
+.f-bot {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 24px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* LEGAL MODALS */
+.legal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), visibility 0.3s;
+}
+
+.legal-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.legal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 201;
+}
+
+.legal-dialog {
+  position: relative;
+  z-index: 202;
+  width: 100%;
+  max-width: 760px;
+  max-height: 85vh;
+  background: linear-gradient(180deg, #101010, #060606);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.9), 0 0 60px -10px rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.legal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(255,255,255,0.02);
+}
+
+.legal-badge {
+  font: 600 10.5px var(--fm);
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.legal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  background: rgba(255,255,255,0.04);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 15px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.legal-close:hover {
+  color: #fff;
+  border-color: var(--border);
+  background: rgba(255,255,255,0.1);
+}
+
+.legal-body {
+  padding: 32px 28px;
+  overflow-y: auto;
+  line-height: 1.75;
+  font-size: 15px;
+  color: var(--muted);
+}
+.legal-body::-webkit-scrollbar { width: 6px; }
+.legal-body::-webkit-scrollbar-track { background: transparent; }
+.legal-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+.legal-body h1 {
+  font: 700 clamp(1.8rem, 4vw, 2.2rem)/1.2 "Inter", sans-serif;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.legal-body .updated {
+  font: 500 12px var(--fm);
+  color: #7a7a7a;
+  margin-bottom: 28px;
+}
+
+.legal-body h2 {
+  font: 600 18px "Inter", sans-serif;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 32px 0 12px;
+}
+
+.legal-body p { margin-bottom: 14px; }
+.legal-body p b, .legal-body li b { color: #fff; font-weight: 600; }
+.legal-body ul { margin: 0 0 16px 20px; color: var(--muted); }
+.legal-body li { margin-bottom: 8px; }
+
+.legal-callout {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 20px 0;
+}
+.legal-callout p { margin-bottom: 0; color: #fff; font-size: 14.5px; }
+
+.sec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.sec-item {
+  background: #0a0a0a;
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.sec-item .lb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 600 13.5px "Inter", sans-serif;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.sec-item .lb svg { color: #fff; flex: none; }
+.sec-item p { font-size: 13px; margin-bottom: 0; color: var(--muted); }
+
+.sec-report {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-top: 14px;
+}
+
+.sec-report .ic {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+.sec-report a, .legal-body a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* SPA VIEW ROUTER */
+.view-section {
+  display: none;
+}
+.view-section.active-view {
+  display: block;
+  animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.nav-link.active-route {
+  border-color: rgba(235,235,235,0.9);
+  background: linear-gradient(105deg, #111 0%, #3a3a3a 45%, #6a6a6a 100%);
+}
+.mobile-nav-links a.active-route {
+  color: #fff;
+}
+
+/* ANIMATIONS */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+.appear {
+  opacity: 1;
+  animation-duration: 1.05s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-delay: var(--d, 0.08s);
+}
+
+.appear--scale { animation-name: in-scale; }
+.appear--soft  { animation-name: in-soft; }
+.appear--mask  { animation-name: in-mask; }
+.appear--pop   { animation-name: in-pop; }
+.appear--btn   { animation-name: in-btn; }
+.appear--side  { animation-name: in-side; }
+
+.lede.appear.appear--soft { animation-duration: 1.25s; }
+.badge-star { animation: in-star 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both; }
+.hero h1 em { animation: in-em 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both, titanium-shimmer 3.6s ease-in-out 2s infinite; }
+
+.is-in {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  filter: none !important;
+}
+
+@keyframes in-scale { 0% { opacity: 0; transform: scale(0.84); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes in-soft { 0% { opacity: 0; transform: translateY(14px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes in-mask { 0% { opacity: 0; transform: translateY(40%); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes in-pop { 0% { opacity: 0; transform: scale(0.9); } 70% { opacity: 1; transform: scale(1.03); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes in-btn { 0% { opacity: 0; transform: translateY(18px) scale(0.94); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes in-side { 0% { opacity: 0; transform: translateX(22px); } 100% { opacity: 1; transform: translateX(0); } }
+@keyframes in-star { 0% { transform: scale(0.2) rotate(-50deg); opacity: 0; } 65% { transform: scale(1.2) rotate(8deg); opacity: 1; } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
+@keyframes in-em { 0% { opacity: 0.35; filter: blur(4px); } 100% { opacity: 1; filter: blur(0); } }
+@keyframes titanium-shimmer { 0% { background-position: 200% center; } 100% { background-position: -60% center; } }
+@keyframes caret { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes tickmove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* RESPONSIVE */
+@media (min-width: 1600px) {
+  :root {
+    --h1: 64px;
+    --h2: 40px;
+    --lede: 18px;
+    --logo: 24px;
+    --logo-mark: 38px;
+    --nav: 15px;
+    --nav-h: 44px;
+    --copy-max: 980px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1599px) {
+  :root {
+    --h1: 54px;
+    --h2: 37px;
+    --lede: 16px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1279px) {
+  :root {
+    --h1: 42px;
+    --h2: 30px;
+    --lede: 15px;
+    --logo: 20px;
+    --logo-mark: 31px;
+    --nav: 13px;
+    --nav-h: 36px;
+    --header-x: 28px;
+    --hero-gap: 64px;
+  }
+  .nav-link { padding: 0 14px; }
+}
+
+@media (max-width: 1024px) {
+  .shead, .pv-grid, .about-grid, .how-grid { grid-template-columns: 1fr; gap: 44px; }
+  .how-sticky { position: static; }
+  .hnav { display: none; }
+  .card, .card:nth-child(n) { grid-column: span 12; }
+  .about-stats { grid-template-columns: 1fr; }
+  .about-stats div { border-right: 0; border-bottom: 1px solid var(--border-soft); }
+  .about-stats div:last-child { border-bottom: 0; }
+  .f-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; }
+  #site-nav { display: none; }
+  .header-actions .header-cta { display: none; }
+  .burger { display: flex; }
+  .hero { min-height: 0; padding: 40px 20px 64px; }
+  :root { --h1: 36px; --lede: 16.5px; --hero-gap: 36px; --logo-mark: 28px; --logo: 18px; }
+  .sec-grid { grid-template-columns: 1fr; }
+  .hero-photo::after {
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, #000000 95%);
+  }
+  .hero-photo {
+    background-image: 
+      radial-gradient(circle 400px at 50% 20%, rgba(255, 255, 255, 0.18), transparent 70%),
+      radial-gradient(circle 600px at 50% 80%, rgba(255, 255, 255, 0.08), transparent 75%);
+  }
+}
+
+@media (max-width: 760px) {
+  .metrics, .calc-result { grid-template-columns: 1fr; }
+  .sec { padding: 80px 0; }
+  .f-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  :root { --h1: 34px; --header-x: 16px; --logo-mark: 25px; --logo: 16.5px; }
+  .logo { gap: 8px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .appear, .rv, .hero h1 em, .badge-star { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+</style>
+</head>
+<body style="background:#000;color:#fff">
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- BACKGROUND VIDEO -->
+<div class="hero-photo" id="heroPhoto" aria-hidden="true">
+  <video src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4" autoplay loop muted playsinline
+  style="opacity:0"
+  onloadeddata="this.style.opacity='0.88'"
+  onerror="this.style.display='none'"></video>
+</div>
+
+<!-- MOBILE FULLSCREEN DRAWER -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul class="mobile-nav-links">
+    <li><a href="#problem">Why Hyde</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://chat.hydethinks.com" class="btn btn-solid mobile-cta"><span>Open Hyde</span></a>
+</div>
+
+<!-- LEGAL MODALS -->
+<div class="legal-modal" id="legalModal" aria-hidden="true">
+  <div class="legal-backdrop" id="legalBackdrop"></div>
+  <div class="legal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="legal-head">
+      <span class="legal-badge" id="modalBadge">HYDE LEGAL</span>
+      <button class="legal-close" id="modalCloseBtn" aria-label="Close dialog">✕</button>
+    </div>
+    
+    <!-- DOC: SECURITY -->
+    <div class="legal-body" id="docSecurity" style="display:none">
+      <span class="eyebrow">Legal &amp; Infrastructure</span>
+      <h1 id="modalTitle">Security</h1>
+      <div class="updated">Last updated: September 2026</div>
+      <p>Here's how Hyde protects your account and your conversations — in plain language, not legal boilerplate.</p>
+      <div class="legal-callout">
+        <p>Your password is never stored in readable form. All traffic between your device and Hyde is encrypted in transit.</p>
+      </div>
+      <h2>How your data is protected</h2>
+      <div class="sec-grid">
+        <div class="sec-item">
+          <div class="lb"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Encryption in transit</div>
+          <p>Every connection to Hyde uses HTTPS, so data moving between your device and our servers is encrypted.</p>
+        </div>
+        <div class="sec-item">
+          <div class="lb"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hashed passwords</div>
+          <p>We never store your password in plain text — only a one-way hashed version that cannot be reversed.</p>
+        </div>
+        <div class="sec-item">
+          <div class="lb"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Zero ad trackers</div>
+          <p>Hyde does not run advertising trackers or third-party analytics scripts that profile you.</p>
+        </div>
+      </div>
+      <h2>Keeping your own account secure</h2>
+      <ul>
+        <li>Use a strong, unique password — not one you've reused on another site.</li>
+        <li>Log out of Hyde on shared or public devices.</li>
+      </ul>
+      <h2>Found a security issue?</h2>
+      <div class="sec-report">
+        <div class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <div><b>We take vulnerability reports seriously.</b><br>If you've found an issue, please email <a href="mailto:security@hydethinks.com">security@hydethinks.com</a>.</div>
+      </div>
+    </div>
+
+    <!-- DOC: TERMS -->
+    <div class="legal-body" id="docTerms" style="display:none">
+      <span class="eyebrow">Agreement</span>
+      <h1>Terms of Service</h1>
+      <div class="updated">Last updated: September 2026</div>
+      <p>These terms cover your use of Hyde. By creating an account, you agree to them.</p>
+      <h2>1. What Hyde is</h2>
+      <p>Hyde provides access to intelligent models in a unified, private workspace.</p>
+      <h2>2. Your account</h2>
+      <p>You're responsible for keeping your login credentials secure and for all activity under your account.</p>
+      <h2>3. Acceptable use</h2>
+      <p>You agree not to use Hyde to break the law or overload system servers.</p>
+      <h2>4. The free plan</h2>
+      <p>The core Hyde workspace experience is free, with zero card required.</p>
+      <h2>5. Contact us</h2>
+      <p>Questions regarding these terms can be sent to <a href="mailto:hello@hydethinks.com">hello@hydethinks.com</a>.</p>
+    </div>
+
+    <!-- DOC: PRIVACY -->
+    <div class="legal-body" id="docPrivacy" style="display:none">
+      <span class="eyebrow">Data &amp; Trust</span>
+      <h1>Privacy Policy</h1>
+      <div class="updated">Last updated: September 2026</div>
+      <p>This page explains transparently what data we collect, why, and what we never do.</p>
+      <div class="legal-callout">
+        <p>We never sell your data, never use your chats to train models, and never serve ads.</p>
+      </div>
+      <h2>1. Information we collect</h2>
+      <ul>
+        <li><b>Account information:</b> Your email address and a securely hashed password.</li>
+        <li><b>Chat history:</b> Messages sent and received, stored so you can revisit past threads.</li>
+      </ul>
+      <h2>2. What we never do</h2>
+      <ul>
+        <li>We never sell or rent your personal information to third parties.</li>
+        <li>We never use your conversation data to train any AI models.</li>
+        <li>We never show advertisements inside Hyde.</li>
+      </ul>
+      <h2>3. Contact</h2>
+      <p>For questions concerning your data privacy, contact <a href="mailto:hello@hydethinks.com">hello@hydethinks.com</a>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- MAIN HEADER -->
+<header class="header">
+  <a href="#top" class="logo appear appear--scale" style="--d:0.08s" aria-label="Hyde Thinks">
+    <svg class="logo-mark" version="1.0" role="img" aria-label="Hyde Thinks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1065.000000 589.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,589.000000) scale(0.100000,-0.100000)" fill="#FFFFFF" stroke="none"><path d="M7090 5470 c-20 -20 -20 -33 -20 -558 0 -405 -3 -541 -12 -550 -9 -9 -142 -12 -535 -12 l-523 0 -32 -29 -33 -29 0 -1321 0 -1321 28 -27 27 -28 1020 -3 1019 -2 28 24 28 24 2 1901 c2 1889 2 1900 -18 1925 l-20 26 -470 0 c-456 0 -470 -1 -489 -20z m114 -1996 c14 -14 16 -74 16 -518 0 -377 -3 -505 -12 -514 -8 -8 -63 -12 -183 -12 -120 0 -175 4 -183 12 -9 9 -12 136 -12 508 0 461 1 498 18 512 28 25 40 26 194 27 121 1 149 -2 162 -15z M1500 5467 c-14 -7 -33 -28 -42 -47 -17 -33 -18 -144 -18 -1885 0 -1741 1 -1852 18 -1885 9 -19 28 -40 42 -47 19 -10 146 -12 566 -10 517 2 543 3 563 21 21 19 21 20 21 731 0 671 -1 713 -18 728 -15 14 -55 17 -258 20 -162 3 -248 8 -263 16 -12 7 -29 28 -37 47 -12 29 -12 39 0 68 26 63 41 66 369 66 189 0 305 -4 326 -11 63 -22 61 11 61 -848 0 -429 3 -787 6 -796 4 -8 19 -22 35 -30 23 -12 91 -15 383 -15 239 0 363 4 379 11 14 6 30 22 36 36 8 17 11 393 11 1324 0 1134 -2 1304 -15 1329 -32 63 -6 60 -612 60 -540 0 -553 0 -573 20 -19 19 -20 33 -20 543 l0 524 -23 21 c-23 22 -25 22 -468 22 -335 0 -450 -3 -469 -13z M3852 4343 c-7 -3 -19 -18 -27 -33 -13 -25 -15 -203 -15 -1344 l0 -1315 24 -28 24 -28 495 -5 c469 -5 496 -6 516 -24 12 -11 26 -37 31 -58 7 -25 10 -226 9 -560 l-1 -522 22 -18 c21 -17 53 -18 417 -18 l394 0 24 25 25 24 0 1613 c1 887 3 1743 6 1903 3 159 3 303 0 320 -4 18 -15 41 -27 53 -20 22 -22 22 -413 22 l-393 0 -23 -25 -24 -25 -3 -928 c-4 -1049 5 -952 -89 -952 -29 0 -59 3 -68 6 -14 6 -16 98 -16 939 0 928 0 932 -21 959 l-20 26 -417 -1 c-229 0 -423 -3 -430 -6z M8268 4330 c-14 -10 -30 -32 -37 -47 -8 -21 -11 -367 -9 -1330 l3 -1303 28 -27 27 -28 948 -3 c700 -2 954 1 975 9 57 24 57 27 57 512 0 434 0 445 -21 471 l-20 26 -618 0 c-466 0 -620 3 -629 12 -16 16 -16 140 0 156 9 9 163 12 629 12 670 0 641 -2 654 53 3 12 4 343 3 735 l-3 714 -33 29 -32 29 -949 0 c-928 0 -949 0 -973 -20z m1223 -920 c16 -9 19 -22 19 -83 0 -44 -5 -78 -12 -85 -17 -17 -509 -17 -526 0 -7 7 -12 41 -12 83 0 42 5 76 12 83 16 16 490 17 519 2z M699 2447 c-118 -40 -197 -111 -250 -222 -54 -113 -60 -221 -19 -341 67 -193 276 -320 471 -285 142 24 268 123 332 258 30 64 32 75 32 178 0 103 -2 114 -32 177 -34 73 -95 144 -159 188 -102 71 -251 89 -375 47z"/></g></svg>
+    <span class="logo-suffix">thinks</span>
+  </a>
+
+  <nav id="site-nav" aria-label="Primary">
+    <a href="#problem" class="nav-link appear appear--scale" style="--d:0.16s">Why Hyde</a>
+    <a href="#features" class="nav-link appear appear--soft" style="--d:0.28s">Features</a>
+    <a href="#how" class="nav-link appear appear--scale" style="--d:0.40s">How it works</a>
+    <a href="#pricing" class="nav-link appear appear--soft" style="--d:0.52s">Pricing</a>
+    <a href="#faq" class="nav-link appear appear--soft" style="--d:0.68s">FAQ</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="https://chat.hydethinks.com" class="btn btn-solid header-cta appear appear--scale" style="--d:0.34s">
+      <span>Open Hyde</span>
+    </a>
+    <button class="burger" id="burgerBtn" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ VIEW: HOME ============ -->
+<div id="view-home" class="view-section">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <span class="badge appear appear--pop" style="--d:0.22s">
+      <svg class="badge-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.6C12.55 2.6 12.88 3.15 13.08 4.7c.62 4.7 1.52 5.6 6.22 6.22 1.55.2 2.1.53 2.1 1.08s-.55.88-2.1 1.08c-4.7.62-5.6 1.52-6.22 6.22-.2 1.55-.53 2.1-1.08 2.1s-.88-.55-1.08-2.1c-.62-4.7-1.52-5.6-6.22-6.22C3.15 12.88 2.6 12.55 2.6 12s.55-.88 2.1-1.08c4.7-.62 5.6-1.52 6.22-6.22C11.12 3.15 11.45 2.6 12 2.6Z"/>
+      </svg>
+      ✦ HYDE WORKSPACE · POWERED BY COSMO
+    </span>
+
+    <h1>
+      <span class="headline-line appear appear--mask" style="--d:0.42s">Clarity at the</span>
+      <span class="headline-line appear appear--mask" style="--d:0.62s"><em>speed of thought.</em></span>
+    </h1>
+
+    <p class="lede appear appear--soft" style="--d:0.82s">Drop the cluttered tabs. Experience Cosmo AI inside Hyde — an engine built for instant answers and deep reasoning. <b style="color:#fff">Zero subscriptions, pure focus.</b></p>
+    <p class="tagline appear appear--soft" style="--d:0.9s">Fast. Private. Yours.</p>
+    <p class="typeline appear appear--soft" style="--d:0.96s"><span style="color:#6f6f6f">&gt;_ ask_hyde&nbsp;</span><span id="typew"></span><span class="tcaret" aria-hidden="true"></span></p>
+
+    <div class="hero-actions">
+      <a href="https://chat.hydethinks.com" class="btn btn-solid appear appear--btn" style="--d:1.02s">
+        <span>Open Hyde</span>
+      </a>
+      <a href="#how" class="btn btn-ghost appear appear--side" style="--d:1.14s">
+        <span>See how it works</span>
+      </a>
+    </div>
+
+    <ul class="assure appear appear--soft" style="--d:1.2s">
+      <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>₹0 Subscription Tax</li>
+      <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Powered by Cosmo</li>
+      <li><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Encrypted &amp; Private</li>
+    </ul>
+
+    <!-- CODED APP MOCKUP -->
+    <div class="hero-vis appear appear--soft" style="--d:1.26s">
+      <div class="hero-app-mockup">
+        <div class="app-window">
+          <div class="app-topbar">
+            <div class="app-dots"><span></span><span></span><span></span></div>
+            <div class="app-model-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z"/><path d="M4 12.5l8 4.5 8-4.5" opacity=".5"/></svg>
+              Cosmo
+            </div>
+            <div class="app-topbar-right"><span></span><span></span><span></span></div>
+          </div>
+          <div class="app-body-row">
+            <div class="app-sidebar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 5v14M5 12h14"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V6a2 2 0 012-2h9l5 5v10a2 2 0 01-2 2H6a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="app-main">
+              <div class="mini-chat">
+                <div class="m usr">Can you help me write a Python function to check if a number is prime?</div>
+                <div class="m bot">Sure — here's a clean, efficient version from Cosmo:</div>
+              </div>
+              <pre class="app-code"><span class="cm"># prime_check.py</span>
+<span class="kw">def</span> <span class="fn">is_prime</span>(n):
+    <span class="kw">if</span> n < 2:
+        <span class="kw">return</span> False
+    <span class="kw">for</span> i <span class="kw">in</span> range(2, int(n**0.5) + 1):
+        <span class="kw">if</span> n % i == 0:
+            <span class="kw">return</span> False
+    <span class="kw">return</span> True</pre>
+              <div class="mini-chat">
+                <div class="m bot">This checks divisibility only up to √n, which is lightning fast.</div>
+              </div>
+              <div class="app-input-mock">
+                <span>Message Cosmo…</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a9 9 0 11-9-9"/></svg>
+                <div class="app-send-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dw-float">⚡ <b>Cosmo Ready</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER 1 -->
+<div class="tick" aria-hidden="true">
+  <div class="tick-label">Engine</div>
+  <div class="tick-row">
+    <div class="tick-group"><span>NO SUBSCRIPTION BS</span><span>POWERED BY COSMO</span><span>LIGHTNING FAST</span><span>ZERO RENT</span></div>
+    <div class="tick-group"><span>NO SUBSCRIPTION BS</span><span>POWERED BY COSMO</span><span>LIGHTNING FAST</span><span>ZERO RENT</span></div>
+  </div>
+</div>
+
+<!-- 01 PROBLEM -->
+<section class="sec" id="problem">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow rv">01 · The Problem</span><h2 class="rv">You're paying rent <em>for intelligence.</em></h2></div>
+      <p class="lead rv">₹1,700 a month. ₹20,400 a year. That's a small vacation, just to talk to a robot locked behind a recurring credit card subscription. Hyde removes that friction entirely.</p>
+    </div>
+    <div class="metrics rv">
+      <div class="metric bad">
+        <div class="metric-lbl">Current annual cost</div>
+        <div class="metric-num">₹20,400</div>
+        <div class="metric-sub">For one chatbot, one model. Locked behind a monthly subscription.</div>
+        <div class="metric-tag">◆ Subscription tax</div>
+      </div>
+      <div class="metric good">
+        <div class="metric-lbl">With Hyde</div>
+        <div class="metric-num">₹0</div>
+        <div class="metric-sub">Full intelligence, modern workspace. Ready when you are.</div>
+        <div class="metric-tag">✓ No subscription</div>
+      </div>
+    </div>
+    <p class="lead rv" style="margin-top:20px;font-size:12px;font-family:var(--fm)">* No card. No trial timer. No renewal "surprise".</p>
+  </div>
+</section>
+
+<!-- 02 FEATURES -->
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow rv">02 · Features</span><h2 class="rv">Everything you need. <em>Nothing you're billed for.</em></h2></div>
+      <p class="lead rv">Three obsessions — powerful intelligence, fast responses, and complete privacy.</p>
+    </div>
+    <div class="bento">
+      <article class="card rv">
+        <span class="c-num">F/01</span>
+        <div class="c-top">
+          <div class="c-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 12.5l8 4.5 8-4.5M4 17l8 4.5 8-4.5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" opacity=".55"/></svg></div>
+          <h3>Powered by Cosmo</h3>
+        </div>
+        <p>Built directly into your Hyde workspace. Enjoy fast response times, broad reasoning capabilities, and seamless multimodal chats.</p>
+        <div class="pills" id="pills">
+          <div class="pill on"><i></i>Cosmo Model</div>
+          <div class="pill"><i></i>Hyde Workspace</div>
+          <div class="pill"><i></i>Realtime Reasoning</div>
+          <div class="pill"><i></i>Fast Inference</div>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <span class="c-num">F/02</span>
+        <div class="c-top">
+          <div class="c-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 9v4l3 2M9 2h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <h3>Instant Start</h3>
+        </div>
+        <p>Drop your email, jump in, and start blowing through tasks. No confusing setups, no "enter credit card to start free trial" scams.</p>
+        <div class="steps-mini" id="setupList">
+          <div class="smi done"><span class="ck">✓</span>Open chat.hydethinks.com</div>
+          <div class="smi done"><span class="ck">✓</span>Log in with your account</div>
+          <div class="smi done"><span class="ck">✓</span>Start chatting immediately</div>
+        </div>
+        <div class="timer-row">
+          <span class="tl">Estimated time</span>
+          <span class="timer">0:30</span>
+        </div>
+      </article>
+
+      <article class="card rv">
+        <span class="c-num">F/03</span>
+        <div class="c-top">
+          <div class="c-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Private &amp; Encrypted</h3>
+        </div>
+        <p>What happens in Hyde, stays in Hyde. We don't read your chats, we don't sell your data, and we definitely don't train our models on your late-night debugging panics.</p>
+        <div class="shield-stats">
+          <div><b>0</b> trackers or ads</div>
+          <div><b>0</b> public training on your data</div>
+          <div><b>0</b> data resale</div>
+        </div>
+        <div style="margin-top:20px;padding:11px 15px;border-radius:9px;background:#050505;border:1px solid var(--border-soft);font-size:11.5px;font-family:var(--fm);color:var(--muted);display:flex;align-items:center;gap:9px">
+          <span style="color:#fff;font-size:8px">●</span> Encrypted sessions at rest &amp; transit
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 03 HOW IT WORKS -->
+<section class="sec" id="how">
+  <div class="wrap how-grid">
+    <div class="how-sticky">
+      <span class="eyebrow rv">03 · How it works</span>
+      <h2 class="rv">Two steps. <em>Zero headaches.</em></h2>
+      <p class="lead rv" style="margin-top:16px">No credit card, no onboarding friction.</p>
+      <ul class="hnav" id="hnav" aria-hidden="true">
+        <li class="active"><span class="n">01</span><span class="t">Sign in</span></li>
+        <li><span class="n">02</span><span class="t">Start chatting</span></li>
+      </ul>
+    </div>
+    <div>
+      <article class="step rv" data-step="0">
+        <div class="ghost">01</div>
+        <h3>Open your workspace</h3>
+        <p class="desc">Head to <b>chat.hydethinks.com</b> and enter your credentials. <b>No credit card required.</b></p>
+        <div class="mock">
+          <h4>Hyde Workspace <span class="tag">READY</span></h4>
+          <div class="fld"><div class="fl">Destination</div><div class="fv">chat.hydethinks.com</div></div>
+          <div class="micro">NO SUBSCRIPTION · NO RENEWAL COUNTDOWNS</div>
+        </div>
+      </article>
+
+      <article class="step rv" data-step="1">
+        <div class="ghost">02</div>
+        <h3>Start chatting</h3>
+        <p class="desc">Ask questions, debug code, brainstorm ideas with Cosmo inside Hyde. <b>Fast, clean, intuitive.</b></p>
+        <div class="mock">
+          <div class="mini-chat">
+            <div class="m usr">Draft a system design outline for a real-time messaging pipeline.</div>
+            <div class="m bot">"Consider using WebSockets backed by Redis Pub/Sub..." ✦ done in 1.4s</div>
+          </div>
+          <div class="model-row">
+            <span class="on">Cosmo</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION BANNER -->
+<section class="cta-sec" id="cta">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <span class="eyebrow" style="justify-content:center">Access Now</span>
+      <h2>Clarity at the speed of thought.</h2>
+      <p>Your quiet, beautifully designed workspace is live and ready. Zero subscription tax, for as long as you use it.</p>
+      <a href="https://chat.hydethinks.com" class="btn btn-solid" style="height:48px;padding:0 28px;font-size:15px">
+        <span>Launch Hyde ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+</div>
+<!-- /VIEW: HOME -->
+
+<!-- ============ VIEW: PRICING ============ -->
+<div id="view-pricing" class="view-section">
+
+<!-- 04 PRICING -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow rv">04 · Pricing &amp; Value</span><h2 class="rv">The price is ₹0. <em>Pure intelligence, zero friction.</em></h2></div>
+      <p class="lead rv">Experience full access to Cosmo AI without the burden of a monthly subscription tax.</p>
+    </div>
+    <div class="pv-grid">
+      <div class="pv-panel rv">
+        <h2 style="font-size:clamp(1.3rem, 2.5vw, 1.6rem);margin-bottom:8px">Do the math</h2>
+        <p class="lead" style="margin-bottom:28px">Drag the slider to what you currently pay for AI per month. Watch what Hyde saves you in a year.</p>
+        <div class="calc-label"><span>You currently pay</span><b id="calcVal">₹1,700</b></div>
+        <input type="range" class="calc-range" id="calcRange" min="0" max="5000" step="100" value="1700" aria-label="Monthly AI spend">
+        <div class="calc-result">
+          <div class="calc-card bad"><div class="cc-label">You're burning</div><div class="cc-num" id="calcBurn">₹20,400</div><div class="cc-sub">per year</div></div>
+          <div class="calc-card good"><div class="cc-label">With Hyde</div><div class="cc-num" id="calcBurnGood">₹0</div><div class="cc-sub">per year</div></div>
+        </div>
+        <div class="pv-saved"><div class="pv-saved-num" id="calcSaved">₹20,400</div><div class="pv-saved-sub">every single year</div></div>
+      </div>
+
+      <div class="pv-panel rv">
+        <div class="zero-wrap">
+          <div class="zero-lb">The entire price list</div>
+          <div class="zero">₹0</div>
+          <div class="zero-sub">free to use. yes, actually.</div>
+        </div>
+        <p class="pv-copy">Cosmo is ready when you are. Leave the 20,400 rupee annual guilt-trips to the other guys. No "You've reached your limit" popups just when you're in the zone.</p>
+        <ul class="inc">
+          <li>✓ Cosmo intelligence</li>
+          <li>✓ Uncluttered UI</li>
+          <li>✓ Keeping your hard-earned money</li>
+        </ul>
+        <div class="no-badges"><span class="chip">✕ No recurring monthly bills</span><span class="chip">✕ No card on file</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 COMPARISON -->
+<section class="sec" id="compare">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow rv">05 · Comparison</span><h2 class="rv">Hyde vs traditional <em>subscriptions.</em></h2></div>
+      <p class="lead rv">Modern intelligence. Different philosophy.</p>
+    </div>
+    <div class="cmp-wrap rv">
+      <table class="cmp">
+        <thead><tr><th></th><th class="hl">Hyde</th><th>ChatGPT Plus</th><th>Claude Pro</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly price</td><td class="hl free">₹0</td><td class="paid">₹1,700</td><td class="paid">₹1,700</td></tr>
+          <tr><td>Mandatory credit card on file</td><td class="hl yes">No</td><td class="no">Yes</td><td class="no">Yes</td></tr>
+          <tr><td>Paywall interruptions</td><td class="hl yes">None</td><td>Frequent</td><td>Frequent</td></tr>
+          <tr><td>Data training opt-out</td><td class="hl yes">Private by default</td><td>Manual opt-out</td><td>Manual opt-out</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</div>
+<!-- /VIEW: PRICING -->
+
+<!-- ============ VIEW: ABOUT ============ -->
+<div id="view-about" class="view-section">
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="wrap">
+    <h2 class="rv">Clarity at the speed of thought. <em>Pay for none.</em></h2>
+    <p class="rv">Modern AI should be accessible in <b>one quiet, beautifully designed workspace.</b></p>
+  </div>
+</section>
+
+<!-- 08 ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow rv">08 · Behind Hyde</span><h2 class="rv">A small team. <em>A clear conviction.</em></h2></div>
+      <p class="lead rv">Hyde was built to deliver intelligence without unnecessary software lock-in.</p>
+    </div>
+    <div class="about-grid">
+      <div class="letter rv">
+        <div class="letter-head"><span class="letter-tag">A note from the team</span><span class="letter-date">2026</span></div>
+        <p class="letter-p big">We believe everyday intelligence shouldn't be locked behind friction and recurring subscription paywalls.</p>
+        <p class="letter-p">Hyde was built to give individuals a clean, focused, sovereign workspace to collaborate with intelligent models like Cosmo. Because holding intelligence hostage behind a ₹1,700/month paywall is just greedy.</p>
+        <p class="letter-sign">— The Hyde team<span>independent · focused · building for the long term</span></p>
+      </div>
+      <div class="beliefs">
+        <div class="belief rv"><span class="b-n">01</span><div><h3>Intelligence is a utility.</h3><p>Like water and electricity — it should simply be there when you reach for it.</p></div></div>
+        <div class="belief rv" style="--d:0.06s"><span class="b-n">02</span><div><h3>No VIP ropes.</h3><p>We don't put the 'smart' AI behind a paywall and leave you with the dumb one. Everyone gets Cosmo.</p></div></div>
+        <div class="belief rv" style="--d:0.12s"><span class="b-n">03</span><div><h3>Privacy first.</h3><p>No advertising trackers or cross-profile tracking.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eyebrow rv">07 · FAQ</span><h2 class="rv">Fair questions, <em>straight answers.</em></h2></div>
+      <p class="lead rv">Have questions? Reach out anytime at <a href="mailto:hello@hydethinks.com" style="color:#fff;text-decoration:underline;text-underline-offset:3px">hello@hydethinks.com</a></p>
+    </div>
+    <div class="acc-grid">
+      <div class="acc rv"><button class="acc-h" aria-expanded="false">Is this safe?<span class="pl">+</span></button><div class="acc-b"><div><p>Yes. Connections to Hyde are securely encrypted via HTTPS. We never sell your information or run advertising scripts.</p></div></div></div>
+      <div class="acc rv"><button class="acc-h" aria-expanded="false">Where is the chat app hosted?<span class="pl">+</span></button><div class="acc-b"><div><p>You can directly access the full live application at <b>chat.hydethinks.com</b>.</p></div></div></div>
+      <div class="acc rv"><button class="acc-h" aria-expanded="false">Does Hyde cost anything to get started?<span class="pl">+</span></button><div class="acc-b"><div><p>No. You can create an account and start using Cosmo without needing a payment card on file.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER 2 -->
+<div class="tick tick-punch" aria-hidden="true">
+  <div class="tick-row">
+    <div class="tick-group"><span>CLARITY AT THE SPEED OF THOUGHT</span><span>POWERED BY COSMO</span><span>FAST INFERENCE</span><span>₹0 SUBSCRIPTION TAX</span><span>PRIVATE &amp; ENCRYPTED</span></div>
+    <div class="tick-group"><span>CLARITY AT THE SPEED OF THOUGHT</span><span>POWERED BY COSMO</span><span>FAST INFERENCE</span><span>₹0 SUBSCRIPTION TAX</span><span>PRIVATE &amp; ENCRYPTED</span></div>
+  </div>
+</div>
+</div>
+<!-- /VIEW: ABOUT -->
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a href="#top" class="logo"><svg class="logo-mark" style="height:20px" version="1.0" role="img" aria-label="Hyde Thinks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1065.000000 589.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,589.000000) scale(0.100000,-0.100000)" fill="#FFFFFF" stroke="none"><path d="M7090 5470 c-20 -20 -20 -33 -20 -558 0 -405 -3 -541 -12 -550 -9 -9 -142 -12 -535 -12 l-523 0 -32 -29 -33 -29 0 -1321 0 -1321 28 -27 27 -28 1020 -3 1019 -2 28 24 28 24 2 1901 c2 1889 2 1900 -18 1925 l-20 26 -470 0 c-456 0 -470 -1 -489 -20z m114 -1996 c14 -14 16 -74 16 -518 0 -377 -3 -505 -12 -514 -8 -8 -63 -12 -183 -12 -120 0 -175 4 -183 12 -9 9 -12 136 -12 508 0 461 1 498 18 512 28 25 40 26 194 27 121 1 149 -2 162 -15z M1500 5467 c-14 -7 -33 -28 -42 -47 -17 -33 -18 -144 -18 -1885 0 -1741 1 -1852 18 -1885 9 -19 28 -40 42 -47 19 -10 146 -12 566 -10 517 2 543 3 563 21 21 19 21 20 21 731 0 671 -1 713 -18 728 -15 14 -55 17 -258 20 -162 3 -248 8 -263 16 -12 7 -29 28 -37 47 -12 29 -12 39 0 68 26 63 41 66 369 66 189 0 305 -4 326 -11 63 -22 61 11 61 -848 0 -429 3 -787 6 -796 4 -8 19 -22 35 -30 23 -12 91 -15 383 -15 239 0 363 4 379 11 14 6 30 22 36 36 8 17 11 393 11 1324 0 1134 -2 1304 -15 1329 -32 63 -6 60 -612 60 -540 0 -553 0 -573 20 -19 19 -20 33 -20 543 l0 524 -23 21 c-23 22 -25 22 -468 22 -335 0 -450 -3 -469 -13z M3852 4343 c-7 -3 -19 -18 -27 -33 -13 -25 -15 -203 -15 -1344 l0 -1315 24 -28 24 -28 495 -5 c469 -5 496 -6 516 -24 12 -11 26 -37 31 -58 7 -25 10 -226 9 -560 l-1 -522 22 -18 c21 -17 53 -18 417 -18 l394 0 24 25 25 24 0 1613 c1 887 3 1743 6 1903 3 159 3 303 0 320 -4 18 -15 41 -27 53 -20 22 -22 22 -413 22 l-393 0 -23 -25 -24 -25 -3 -928 c-4 -1049 5 -952 -89 -952 -29 0 -59 3 -68 6 -14 6 -16 98 -16 939 0 928 0 932 -21 959 l-20 26 -417 -1 c-229 0 -423 -3 -430 -6z M8268 4330 c-14 -10 -30 -32 -37 -47 -8 -21 -11 -367 -9 -1330 l3 -1303 28 -27 27 -28 948 -3 c700 -2 954 1 975 9 57 24 57 27 57 512 0 434 0 445 -21 471 l-20 26 -618 0 c-466 0 -620 3 -629 12 -16 16 -16 140 0 156 9 9 163 12 629 12 670 0 641 -2 654 53 3 12 4 343 3 735 l-3 714 -33 29 -32 29 -949 0 c-928 0 -949 0 -973 -20z m1223 -920 c16 -9 19 -22 19 -83 0 -44 -5 -78 -12 -85 -17 -17 -509 -17 -526 0 -7 7 -12 41 -12 83 0 42 5 76 12 83 16 16 490 17 519 2z M699 2447 c-118 -40 -197 -111 -250 -222 -54 -113 -60 -221 -19 -341 67 -193 276 -320 471 -285 142 24 268 123 332 258 30 64 32 75 32 178 0 103 -2 114 -32 177 -34 73 -95 144 -159 188 -102 71 -251 89 -375 47z"/></g></svg><span class="logo-suffix">thinks</span></a>
+        <p>The AI workspace for people allergic to subscriptions. Smart, fast, and aggressively free.</p>
+        <div class="socials">
+          <a href="https://x.com/hydethinks" target="_blank" rel="noopener">@hydethinks on X</a>
+          <a href="https://instagram.com/hydethinks" target="_blank" rel="noopener">@hydethinks on Instagram</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Product</h5>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://chat.hydethinks.com">Open Hyde</a>
+      </div>
+      <div class="f-col">
+        <h5>Legal</h5>
+        <a class="legal-trigger" data-target="docPrivacy">Privacy Policy</a>
+        <a class="legal-trigger" data-target="docTerms">Terms of Service</a>
+        <a class="legal-trigger" data-target="docSecurity">Security</a>
+      </div>
+      <div class="f-col">
+        <h5>Contact</h5>
+        <a href="mailto:hello@hydethinks.com">hello@hydethinks.com</a>
+        <a href="https://x.com/hydethinks" target="_blank" rel="noopener">X / @hydethinks</a>
+        <a href="https://instagram.com/hydethinks" target="_blank" rel="noopener">Instagram / @hydethinks</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Hyde. All rights reserved.</span>
+      <span>MADE WITH ♥ IN INDIA 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* SCROLL PARALLAX (HERO BACKGROUND) */
+var heroPhotoEl = document.getElementById('heroPhoto');
+if(heroPhotoEl && !prefersReducedMotion){
+  var parallaxTicking = false;
+
+  function updateHeroParallax(){
+    var y = window.scrollY || window.pageYOffset || 0;
+    var vh = window.innerHeight || 800;
+    var progress = Math.min(y / (vh * 0.9), 1);
+    var translateY = Math.min(y * 0.28, vh * 0.35);
+    var blurPx = progress * 14;
+    var opacity = 1 - progress * 0.55;
+
+    heroPhotoEl.style.transform = 'translateY(' + translateY.toFixed(1) + 'px)';
+    heroPhotoEl.style.filter = 'blur(' + blurPx.toFixed(2) + 'px)';
+    heroPhotoEl.style.opacity = opacity.toFixed(3);
+
+    parallaxTicking = false;
+  }
+
+  function onHeroScroll(){
+    if(!parallaxTicking){
+      requestAnimationFrame(updateHeroParallax);
+      parallaxTicking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onHeroScroll, {passive: true});
+  updateHeroParallax();
+}
+
+/* ENTRANCE ANIMATIONS */
+var appearEls = document.querySelectorAll('.appear');
+appearEls.forEach(function(el){
+  el.addEventListener('animationend', function(){ el.classList.add('is-in'); }, {once:true});
+});
+
+/* MOBILE MENU CONTROLLER */
+var burger = document.getElementById('burgerBtn');
+var mobileMenuEl = document.getElementById('mobileMenu');
+
+function toggleMenu(forceClose){
+  var isOpen = document.body.classList.contains('menu-open');
+  if(forceClose === true || isOpen){
+    document.body.classList.remove('menu-open');
+    if(burger){
+      burger.setAttribute('aria-expanded','false');
+    }
+    if(mobileMenuEl) mobileMenuEl.setAttribute('aria-hidden','true');
+  } else {
+    document.body.classList.add('menu-open');
+    if(burger){
+      burger.setAttribute('aria-expanded','true');
+    }
+    if(mobileMenuEl) mobileMenuEl.setAttribute('aria-hidden','false');
+  }
+}
+
+if(burger){
+  burger.addEventListener('click', function(e){
+    e.stopPropagation();
+    toggleMenu();
+  });
+}
+
+/* SPA VIEW ROUTER */
+var routeMap = {
+  'top':       'view-home',
+  'problem':   'view-home',
+  'features':  'view-home',
+  'how':       'view-home',
+  'cta':       'view-home',
+  'pricing':   'view-pricing',
+  'compare':   'view-pricing',
+  'manifesto': 'view-about',
+  'about':     'view-about',
+  'faq':       'view-about'
+};
+var DEFAULT_VIEW = 'view-home';
+var viewSections = document.querySelectorAll('.view-section');
+var routableLinks = document.querySelectorAll('#site-nav a[href^="#"], .mobile-nav-links a[href^="#"]');
+
+function applyRoute(rawHash){
+  var key = (rawHash || '').replace('#', '') || 'top';
+  var viewId = routeMap.hasOwnProperty(key) ? routeMap[key] : DEFAULT_VIEW;
+
+  viewSections.forEach(function(sec){
+    sec.classList.remove('active-view');
+  });
+  var targetView = document.getElementById(viewId);
+  if(targetView){
+    targetView.classList.add('active-view');
+  }
+
+  routableLinks.forEach(function(link){
+    var linkKey = (link.getAttribute('href') || '').replace('#', '') || 'top';
+    var linkView = routeMap.hasOwnProperty(linkKey) ? routeMap[linkKey] : DEFAULT_VIEW;
+    link.classList.toggle('active-route', linkView === viewId);
+  });
+
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+  anchor.addEventListener('click', function(e){
+    var href = anchor.getAttribute('href');
+    if(href && href.startsWith('#')){
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu(true);
+      if(window.location.hash === href){
+        applyRoute(href);
+      } else {
+        window.location.hash = href;
+      }
+    }
+  });
+});
+
+window.addEventListener('hashchange', function(){
+  applyRoute(window.location.hash);
+});
+applyRoute(window.location.hash);
+
+/* LEGAL MODAL CONTROLLER */
+var legalModal = document.getElementById('legalModal');
+var modalCloseBtn = document.getElementById('modalCloseBtn');
+var legalBackdrop = document.getElementById('legalBackdrop');
+var legalBodies = document.querySelectorAll('.legal-body');
+
+function openLegalModal(targetId){
+  legalBodies.forEach(function(b){ b.style.display = 'none'; });
+  var activeBody = document.getElementById(targetId);
+  if(activeBody){
+    activeBody.style.display = 'block';
+    legalModal.classList.add('active');
+    legalModal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeLegalModal(){
+  legalModal.classList.remove('active');
+  legalModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.legal-trigger').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    openLegalModal(btn.getAttribute('data-target'));
+  });
+});
+
+if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeLegalModal);
+if(legalBackdrop) legalBackdrop.addEventListener('click', closeLegalModal);
+
+/* SCROLL REVEAL */
+var rv = document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+  rv.forEach(function(el){ io.observe(el); });
+} else {
+  rv.forEach(function(el){ el.classList.add('in'); });
+}
+
+/* FAQ ACCORDION */
+document.querySelectorAll('.acc').forEach(function(acc){
+  var b = acc.querySelector('.acc-h');
+  if(!b) return;
+  b.addEventListener('click', function(){
+    var w = acc.classList.contains('open');
+    document.querySelectorAll('.acc.open').forEach(function(o){
+      o.classList.remove('open');
+      o.querySelector('.acc-h').setAttribute('aria-expanded','false');
+    });
+    if(!w){
+      acc.classList.add('open');
+      b.setAttribute('aria-expanded','true');
+    }
+  });
+});
+
+/* PRICING CALCULATOR */
+var range = document.getElementById('calcRange');
+if(range){
+  var fmt = function(n){ return '₹' + n.toLocaleString('en-IN'); };
+  var up = function(){
+    var v = +range.value || 0, y = v * 12;
+    document.getElementById('calcVal').textContent = fmt(v);
+    document.getElementById('calcBurn').textContent = fmt(y);
+    document.getElementById('calcSaved').textContent = fmt(y);
+  };
+  range.addEventListener('input', up);
+  up();
+}
+
+/* BENTO SPOTLIGHT */
+document.querySelectorAll('.card').forEach(function(c){
+  c.addEventListener('mousemove', function(e){
+    var r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+});
+
+/* PILLS TICKER */
+var pills = document.querySelectorAll('#pills .pill');
+if(pills.length > 1){
+  var pi = 0;
+  setInterval(function(){
+    pills[pi].classList.remove('on');
+    pi = (pi + 1) % pills.length;
+    pills[pi].classList.add('on');
+  }, 1800);
+}
+
+/* TYPEWRITER */
+var tw = document.getElementById('typew');
+if(tw){
+  var ph = [
+    'synthesize a caching architecture.',
+    'generate a clean Python utility script.',
+    'draft a zero-downtime migration plan.',
+    'summarize documentation in seconds.'
+  ];
+  var pi2 = 0, c = 0, del = false;
+  var tick = function(){
+    var p = ph[pi2];
+    if(!del){
+      c++;
+      tw.textContent = p.slice(0, c);
+      if(c === p.length){
+        del = true;
+        setTimeout(tick, 1800);
+        return;
+      }
+      setTimeout(tick, 40);
+    } else {
+      c--;
+      tw.textContent = p.slice(0, c);
+      if(c === 0){
+        del = false;
+        pi2 = (pi2 + 1) % ph.length;
+        setTimeout(tick, 400);
+        return;
+      }
+      setTimeout(tick, 22);
+    }
+  };
+  setTimeout(tick, 900);
+}
+
+})();
+</script>
+</body>
+</html>
